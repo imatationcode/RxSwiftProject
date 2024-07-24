@@ -27,13 +27,13 @@ class TabelScreenVC: UIViewController {
     }
     
     func bindTableData(){
-        viewModel.items.bind(
+        viewModel.results.bind(
             to: tableView.rx.items(
                 cellIdentifier: "cell",
                 cellType: UITableViewCell.self)
         ){ row, model, cell in
             cell.textLabel?.text = model.title
-            cell.imageView?.image = UIImage(systemName: model.imagePic ?? "")
+//            cell.imageView?.image = UIImage(systemName: model.imagePic ?? "")
         }.disposed(by: bag)
         
         tableView.rx.modelSelected(ProductList.self)
@@ -41,6 +41,7 @@ class TabelScreenVC: UIViewController {
                 print(product.title!)
             }.disposed(by: bag)
         
-        viewModel.fetchItems()
+        viewModel.fetchMovieResult()
+//        viewModel.fetchItems()
     }
 }
